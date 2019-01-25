@@ -50,17 +50,18 @@ public class MusicServiceImpl implements MusicService {
     {
         if(!musicRepository.existsById(trackId))
         {
-            throw new TrackNotFoundException("track to update doesnt exists try posting first");
+            throw new TrackNotFoundException("track to update does not exists try posting first");
         }
 
         Music updateMusic=musicRepository.findById(trackId).get();
+//        System.out.println(updateMusic.toString());
         updateMusic.setTrackComment(comment);
         musicRepository.save(updateMusic);
 
 
         if(updateMusic==null)
         {
-            throw new TrackNotFoundException("track doesnt exists");
+            throw new TrackNotFoundException("track doesn't exists");
         }
         return updateMusic;
     }
@@ -71,7 +72,7 @@ public class MusicServiceImpl implements MusicService {
     {
         if(!musicRepository.existsById(trackId))
         {
-            throw new TrackNotFoundException("track to delete doesnt exists");
+            throw new TrackNotFoundException("track to delete doesn't exists");
         }
 
         musicRepository.deleteById(trackId);
